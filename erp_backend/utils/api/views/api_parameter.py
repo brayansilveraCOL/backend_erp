@@ -25,7 +25,7 @@ class ParameterViewSet(mixins.CreateModelMixin,
         return [permission() for permission in permissions]
 
     def perform_destroy(self, instance):
-        """Disable membership."""
+        """Disable Parameter."""
         instance.state = False
         instance.save()
 

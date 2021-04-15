@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
@@ -53,7 +55,8 @@ class Address(BaseModel):
 
 
 class Contact(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.CharField(_('Address User'), blank=True, null=True, max_length=25)
     full_name = models.CharField(_('Full Name Contact'), blank=True, null=True, max_length=50)
     phone_regex = RegexValidator(regex=r'\+?1?\d{9,15}$',

@@ -27,6 +27,6 @@ class IvaViewSet(mixins.CreateModelMixin,
         return [permission() for permission in permissions]
 
     def perform_destroy(self, instance):
-        """Disable membership."""
+        """Disable Iva."""
         instance.state = False
         instance.save()

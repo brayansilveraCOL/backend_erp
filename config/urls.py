@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('utils/', include('erp_backend.utils.api.urls')),
     path('', include(('erp_backend.users.urls', 'users'), namespace='users')),
+    path('', include(('erp_backend.person_informations.urls', 'contacts'), namespace='contacts')),
+
 ]
