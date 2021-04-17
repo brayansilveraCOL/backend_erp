@@ -11,6 +11,7 @@ from simple_history.models import HistoricalRecords
 
 
 class Phone(BaseModel):
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     phone_regex = RegexValidator(regex=r'\+?1?\d{9,15}$',
                                  message="Not Valid Phone Number")
@@ -34,7 +35,8 @@ class Phone(BaseModel):
 
 
 class Address(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.CharField(_('Address User'), blank=True, null=True, max_length=25)
     Historical = HistoricalRecords()
 

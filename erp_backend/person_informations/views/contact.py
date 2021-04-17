@@ -48,6 +48,9 @@ class ContactViewSet(mixins.ListModelMixin,
         data = self.get_serializer(contact).data
         return Response(data, status=status.HTTP_201_CREATED)
 
+    def partial_update(self, request, *args, **kwargs):
+        pass
+
 
 class ContactDetailViewSet(
     mixins.ListModelMixin,
