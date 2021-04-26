@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 # Local imports
@@ -9,6 +11,7 @@ from simple_history.models import HistoricalRecords
 
 
 class TypePlan(BaseModel):
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
     description = models.CharField('Type  Plan', max_length=100, unique=True, blank=False, null=False)
     quota = models.PositiveIntegerField('Quota Plan')
     historical = HistoricalRecords()
@@ -26,7 +29,8 @@ class TypePlan(BaseModel):
 
 
 class TypeSale(BaseModel):
-    description = models.CharField('Type  Plan', max_length=100, unique=True, blank=False, null=False)
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
+    description = models.CharField('Type  Sale', max_length=100, unique=True, blank=False, null=False)
     historical = HistoricalRecords()
 
     def __str__(self):
@@ -42,8 +46,9 @@ class TypeSale(BaseModel):
 
 
 class ListPrice(BaseModel):
-    typeSale = models.ForeignKey(TypeSale, on_delete=models.PROTECT)
-    typePlan = models.ForeignKey(TypePlan, on_delete=models.PROTECT)
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
+    typeSale = models.ForeignKey(TypeSale, on_delete=models.CASCADE)
+    typePlan = models.ForeignKey(TypePlan, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     fullPrice = models.DecimalField('unity Price For Product', max_digits=6, decimal_places=2)
     historical = HistoricalRecords()
