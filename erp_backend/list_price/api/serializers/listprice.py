@@ -64,7 +64,6 @@ class ListPartialUpdateSerializer(serializers.Serializer):
     fullPrice = serializers.DecimalField(max_digits=6, decimal_places=2)
 
     def update(self, instance, validated_data):
-        print(validated_data.get('fullPrice'))
         instance.fullPrice = validated_data.get('fullPrice', instance.fullPrice)
         instance.save()
         return instance

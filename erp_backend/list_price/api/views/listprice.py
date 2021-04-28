@@ -36,6 +36,13 @@ def detail_api_view(request, uniqueCode=None):
                 list_mod = serializer.save()
                 serializer_return = ListRetrieveAllModelSerializer(list_mod)
                 return Response(serializer_return.data, status=status.HTTP_202_ACCEPTED)
+            elif request.method == 'GET':
+                serializer = ListRetrieveAllModelSerializer(list)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            elif request.method == 'DELETE':
+                list.state = False
+                list.save()
+                return Response(status=status.HTTP_204_NO_CONTENT)
         else:
             return Response(status=status.HTTP_204_NO_CONTENT)
     else:
