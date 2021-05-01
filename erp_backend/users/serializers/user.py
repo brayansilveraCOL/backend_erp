@@ -132,6 +132,3 @@ class UserSignUpSerializer(serializers.Serializer):
         # address.address = address = data['address']
         # address.save()
         return user
-
-    def update(self, instance, validated_data):
-        pass

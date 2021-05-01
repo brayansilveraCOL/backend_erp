@@ -50,8 +50,11 @@ class ListPrice(BaseModel):
     typeSale = models.ForeignKey(TypeSale, on_delete=models.CASCADE)
     typePlan = models.ForeignKey(TypePlan, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    fullPrice = models.DecimalField('unity Price For Product', max_digits=6, decimal_places=2)
+    fullPrice = models.DecimalField('unity Price For Product', max_digits=6, decimal_places=2)# Get Full Price in
+    # Product Cluster
     historical = HistoricalRecords()
+
+
 
     def __str__(self):
         return self.product.name

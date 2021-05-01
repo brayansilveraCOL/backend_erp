@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 # Local imports
 from erp_backend.AbstractClasses.BaseModel import BaseModel
@@ -7,6 +9,7 @@ from simple_history.models import HistoricalRecords
 
 
 class TypeMovement(BaseModel):
+    UniqueCode = models.UUIDField('Code Unique Generate', default=uuid.uuid4, editable=False)
     description = models.CharField('Type  Movement', max_length=100, unique=True, blank=False, null=False)
     historical = HistoricalRecords()
 
