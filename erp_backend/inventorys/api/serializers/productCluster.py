@@ -85,3 +85,21 @@ class ProductClusterUpdatePartialSerializer(serializers.Serializer):
         instance.minimum_stock = self.context['minimum_stock']
         instance.save()
         return instance
+#
+#
+# class ProductClusterVerifyAmountSerializer(serializers.Serializer):
+#     quantity = serializers.IntegerField(min_value=1)
+#
+#     def validate(self, attrs):
+#
+#         if attrs['quantity'] <= 0:
+#             raise serializers.ValidationError("Quantity must be greater than 0")
+#
+#         return attrs
+#
+#     def update(self, instance, validated_data):
+#         print(instance.quantity)
+#         instance.quantity = validated_data.get('quantity', instance.quantity)
+#
+
+

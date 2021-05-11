@@ -31,3 +31,5 @@ class TypeMovementViewSet(mixins.ListModelMixin,
         """
         instance.state = False
         instance.save()
+
+

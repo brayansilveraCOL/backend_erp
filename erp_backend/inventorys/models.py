@@ -28,7 +28,7 @@ class Movement(BaseModel):
     historical = HistoricalRecords()
 
     def __str__(self):
-        return self.productCluster.Product.name
+        return self.InternalCode
 
     @property
     def _history_user(self):
