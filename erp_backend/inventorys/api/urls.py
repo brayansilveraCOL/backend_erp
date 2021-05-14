@@ -16,6 +16,7 @@ router.register(r'cluster', ClusterViewSet, basename='cluster'),
 router.register(r'movement', ListRetrieveMovementViewSet, basename='movement'),
 
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('cluster/product', api_view_product_cluster, name='cluster-product'),
