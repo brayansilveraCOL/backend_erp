@@ -66,6 +66,10 @@ class ProductClusterUpdatePartialSerializer(serializers.Serializer):
     observation = serializers.CharField(max_length=4000, required=False)
     purchase_price = serializers.DecimalField(max_digits=6, decimal_places=2, required=False)
     sale_price = serializers.DecimalField(max_digits=6, decimal_places=2, required=False)
+    """
+    Moment for develop, last delte this field
+    """
+    quantity = serializers.IntegerField(min_value=1)
 
     def validate(self, attrs):
 
@@ -82,6 +86,7 @@ class ProductClusterUpdatePartialSerializer(serializers.Serializer):
         instance.observation = validated_data.get('observation', instance.observation)
         instance.purchase_price = validated_data.get('purchase_price', instance.purchase_price)
         instance.sale_price = validated_data.get('sale_price', instance.sale_price)
+        instance.quantity = validated_data.get('quantity', instance.quantity)
         instance.minimum_stock = self.context['minimum_stock']
         instance.save()
         return instance
